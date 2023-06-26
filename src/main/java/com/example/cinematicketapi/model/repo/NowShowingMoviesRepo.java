@@ -2,6 +2,7 @@ package com.example.cinematicketapi.model.repo;
 
 import com.example.cinematicketapi.model.dto.NowShowingMoviesDto;
 import com.example.cinematicketapi.model.entity.NowShowingMovies;
+import com.example.cinematicketapi.model.entity.Schedule;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

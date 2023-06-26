@@ -32,6 +32,7 @@ public class TheaterServices {
 
     @Autowired
     private final SeatRepo seatRepo;
+
     public TheaterServices(TheaterRepo theaterRepo,SeatLevelRepo seatLevelRepo,CinemaServices cinemaServices,
                            SeatRepo seatRepo) {
         this.theaterRepo = theaterRepo;
@@ -78,6 +79,9 @@ public class TheaterServices {
             ele.setTheatreName(form.theatreName());
             ele.setSoundSystem(form.soundSystem());
 
+            seatRepo.deleteSeatByTheaterId(ele.getId());
+            seatLevelRepo.deleteSeatLevelByTheaterId(ele.getId());
+
             for(SeatLevel seatLevel : form.seatLevels()){
                 seatLevel.setTheater(ele);
                 SeatLevelDto.from(seatLevelRepo.save(seatLevel));
@@ -98,6 +102,8 @@ public class TheaterServices {
     }
 
     public void remove(int id){
+        seatRepo.deleteSeatByTheaterId(id);
+        seatLevelRepo.deleteSeatLevelByTheaterId(id);
         theaterRepo.deleteById(id);
     }
 }

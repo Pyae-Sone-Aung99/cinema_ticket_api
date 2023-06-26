@@ -77,21 +77,10 @@ public class NowShowingMoviesServices {
             ele.setTitle(form.title());
             ele.setTrailer(form.trailer());
             ele.setType(form.type());
-
-
+            scheduleRepo.deleteScheduleByNowShowingMoviesId(form.cinemaId());
             for (Schedule schedule : form.schedules()){
-
-                List<Schedule> exitSchedule = scheduleRepo.findByNowShowingMoviesId(form.cinemaId());
-                for (Schedule eachSchedule : exitSchedule){
-                    eachSchedule.setDate(schedule.getDate());
-                    eachSchedule.setStartTime(schedule.getStartTime());
-                    eachSchedule.setEndTime(schedule.getEndTime());
-
-                    ScheduleDto.from(scheduleRepo.save(eachSchedule));
-                }
-//                schedule.setNowShowingMovies(ele);
-//                schedule.setDate();
-
+                schedule.setNowShowingMovies(ele);
+                ScheduleDto.from(scheduleRepo.save(schedule));
             }
             Cinema cinema = cinemaServices.findByBranchManagerId(form.cinemaId());
             ele.setCinema(cinema);
@@ -102,6 +91,7 @@ public class NowShowingMoviesServices {
     }
 
     public void remove(int id){
+        scheduleRepo.deleteScheduleByNowShowingMoviesId(id);
         nowShowingMoviesRepo.deleteById(id);
     }
 }
