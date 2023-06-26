@@ -29,9 +29,7 @@ public class Schedule {
     @Column(nullable = false)
     private LocalDate date;
 
-    @ManyToMany()
-    @JoinTable(name = "schedule_now_showing",
-            joinColumns = @JoinColumn(name = "now_showing_id"),
-            inverseJoinColumns = @JoinColumn(name = "schedule_id"))
-    private List<NowShowingMovies> nowShowingMovies = new ArrayList<>();
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "now_showing_movie_id")
+    private NowShowingMovies nowShowingMovies;
 }

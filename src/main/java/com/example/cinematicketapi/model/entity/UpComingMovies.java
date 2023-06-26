@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Data
@@ -32,6 +31,6 @@ public class UpComingMovies {
     @Column(nullable = false)
     private String poster;
     @ManyToOne
-    @JoinColumn(name = "branch_manager_id")
-    private BranchManager branchManager;
+    @JoinColumn(name = "cineam_id")
+    private Cinema cinema;
 }

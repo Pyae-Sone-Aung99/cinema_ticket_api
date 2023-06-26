@@ -24,21 +24,17 @@ public class NowShowingMovies {
     @Column(nullable = false)
     private String cast;
 
-    @Enumerated(EnumType.STRING)
-    private MovieType type;
+    private String type;
 
     @ManyToOne
-    @JoinColumn(name = "branch_manager_id")
-    private BranchManager branchManager;
+    @JoinColumn(name = "cinema_id")
+    private Cinema cinema;
 
     @ManyToOne()
     @JoinColumn(name = "theater_id")
     private Theater theater;
 
-    @ManyToMany(mappedBy = "nowShowingMovies")
-    private List<Schedule> schedules = new ArrayList<>();
+//    @ManyToMany(mappedBy = "nowShowingMovies")
+//    private List<Schedule> schedules = new ArrayList<>();
 
-    private enum MovieType{
-        TWO_D,THREE_D
-    }
 }

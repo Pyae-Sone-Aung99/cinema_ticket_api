@@ -18,15 +18,26 @@ public class Booking {
     private String name;
     @Column(nullable = false)
     private String email;
-    @Column(nullable = false)
+    @Column(nullable = false,name = "phone_number")
     private String phoneNumber;
-    @Column(nullable = false)
+    @Column(nullable = false,name = "movie_name")
     private String movieName;
-    @Column(nullable = false)
+    @Column(nullable = false,name = "theatre_name")
     private String theatreName;
+    @Column(nullable = false,name = "start_time")
+    private String startTime;
+    @Column(nullable = false,name = "end_time")
+    private String endTime;
     @Column(nullable = false)
-    private LocalDateTime time;
+    private String date;
+    @Column(name = "voucher_code")
+    private String voucherCode;
+    @Column(name = "payment_method")
+    private String paymentMethod;
+    @Column(name = "total_amount")
+    private double totalAmount;
 
-    @OneToMany(mappedBy = "booking")
-    private List<Seat> seats = new ArrayList<>();
+
+//    @OneToMany(mappedBy = "booking")
+//    private List<Seat> seats = new ArrayList<>();
 }

@@ -1,7 +1,11 @@
 package com.example.cinematicketapi.model.entity;
 
+import com.example.cinematicketapi.model.dto.CompanyDto;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,16 +20,23 @@ public class Cinema {
     private String location;
     @Column(nullable = false,name = "phone_number")
     private String phoneNumber;
+    @Column(nullable = false, name="user_name")
+    private String userName;
+    @Column(nullable = false)
+    private String password;
+    private String role;
 
     @ManyToOne
     @JoinColumn(name = "company_id")
     private Company company;
 
-    @ManyToOne
-    @JoinColumn(name = "company_manager_id")
-    private CompanyManager companyManager;
-
-    @OneToOne(optional = false,mappedBy = "cinema")
-    private BranchManager branchManager;
+//    @OneToMany(mappedBy = "cinema")
+//    private List<Theater> theaters = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "cinema")
+//    private List<NowShowingMovies> nowShowingMovies = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "cinema")
+//    private List<UpComingMovies> upComingMovies = new ArrayList<>();
 
 }

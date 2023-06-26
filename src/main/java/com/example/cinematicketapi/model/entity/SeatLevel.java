@@ -14,15 +14,15 @@ public class SeatLevel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(nullable = false)
-    private int level;
+    private String level;
     @Column(nullable = false)
     private int quantity;
     @Column(nullable = false)
-    private int price;
+    private double price;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Theater theater;
 
-    @OneToMany(mappedBy = "level")
-    private List<Seat> seats = new ArrayList<>();
+//    @OneToMany(mappedBy = "level")
+//    private List<Seat> seats = new ArrayList<>();
 }

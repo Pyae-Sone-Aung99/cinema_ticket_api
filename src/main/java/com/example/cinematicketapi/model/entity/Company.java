@@ -19,10 +19,14 @@ public class Company {
     private String email;
     @Column(nullable = false)
     private String phoneNumber;
+    @Column(nullable = false, unique = true, name = "user_name")
+    private String userName;
+    @Column(nullable = false, unique = true)
+    private String password;
+    @Column(nullable = false)
+    private String role;
 
-    @OneToMany(mappedBy = "company")
-    private List<Cinema> cinemas = new ArrayList<>();
+//    @OneToMany(mappedBy = "company",cascade = CascadeType.ALL)
+//    private List<Cinema> cinemas = new ArrayList<>();
 
-    @OneToOne(mappedBy = "company")
-    private CompanyManager companyManager;
 }

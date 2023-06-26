@@ -21,13 +21,13 @@ public class Theater {
 
 
     @ManyToOne
-    @JoinColumn(name = "branch_manager_id")
-    private BranchManager branchManager;
+    @JoinColumn(name = "cinema_id")
+    private Cinema cinema;
 
-    @OneToMany(mappedBy = "theater")
-    private List<NowShowingMovies> nowShowingMovies = new ArrayList<>();
-
-    @OneToMany(mappedBy = "theater")
-    private List<SeatLevel> seatLevels = new ArrayList<>();
+//    @OneToMany(mappedBy = "theater")
+//    private List<NowShowingMovies> nowShowingMovies = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "theater")
+//    private List<SeatLevel> seatLevels = new ArrayList<>();
 
 }
