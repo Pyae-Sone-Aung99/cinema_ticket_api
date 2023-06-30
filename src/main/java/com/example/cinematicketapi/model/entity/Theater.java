@@ -1,5 +1,6 @@
 package com.example.cinematicketapi.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -27,7 +28,9 @@ public class Theater {
 //    @OneToMany(mappedBy = "theater")
 //    private List<NowShowingMovies> nowShowingMovies = new ArrayList<>();
 //
-//    @OneToMany(mappedBy = "theater")
+//    @OneToMany(mappedBy = "theater",cascade = CascadeType.PERSIST)
 //    private List<SeatLevel> seatLevels = new ArrayList<>();
-
+//
+//    @OneToMany(mappedBy = "theater",cascade = CascadeType.PERSIST)
+//    private List<Seat> seats = new ArrayList<>();
 }

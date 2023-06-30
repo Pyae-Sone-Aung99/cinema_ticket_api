@@ -11,7 +11,6 @@ import com.example.cinematicketapi.model.repo.NowShowingMoviesRepo;
 import com.example.cinematicketapi.model.repo.ScheduleRepo;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,16 +19,16 @@ import java.util.List;
 @Service
 public class NowShowingMoviesServices {
 
-    @Autowired
+//    @Autowired
     private final NowShowingMoviesRepo nowShowingMoviesRepo;
 
-    @Autowired
+//    @Autowired
     private final CinemaServices cinemaServices;
 
-    @Autowired
+//    @Autowired
     private final TheaterServices theaterServices;
 
-    @Autowired
+//    @Autowired
     private final ScheduleRepo scheduleRepo;
 
     public NowShowingMoviesServices(NowShowingMoviesRepo nowShowingMoviesRepo,CinemaServices cinemaServices,
@@ -60,6 +59,9 @@ public class NowShowingMoviesServices {
         return NowShowingMoviesDto.from(nowShowingMoviesRepo.save(nowShowingMovies));
     }
 
+    public List<NowShowingMoviesDto> findAll(){
+        return nowShowingMoviesRepo.findAll().stream().map(ele -> NowShowingMoviesDto.from(ele)).toList();
+    }
     public NowShowingMovies findById(int id){
         return nowShowingMoviesRepo.findById(id).orElseThrow(IllegalArgumentException::new);
     }

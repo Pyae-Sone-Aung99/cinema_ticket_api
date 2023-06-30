@@ -1,9 +1,6 @@
 package com.example.cinematicketapi.model.dto;
 
-import com.example.cinematicketapi.model.entity.Cinema;
-import com.example.cinematicketapi.model.entity.NowShowingMovies;
-import com.example.cinematicketapi.model.entity.SeatLevel;
-import com.example.cinematicketapi.model.entity.Theater;
+import com.example.cinematicketapi.model.entity.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,9 +24,10 @@ public class TheaterDto {
 //
 //
 //    private List<SeatLevel> seatLevels;
-
+//    private List<Seat> seats;
     public static TheaterDto from(Theater te){
         return new TheaterDto(te.getId(), te.getTheatreName(),te.getSoundSystem(),
                 te.getCinema());
     }
 }
+//,te.getSeatLevels(),te.getSeats()

@@ -41,6 +41,9 @@ public class StaffServices {
         return StaffDto.from(staffRepo.save(staff));
     }
 
+    public List<StaffDto> findAll(){
+        return staffRepo.findAll().stream().map(ele -> StaffDto.from(ele)).toList();
+    }
     public List<StaffDto> findByBranchManagerId(int id){
         return staffRepo.findByCinemaId(id);
     }

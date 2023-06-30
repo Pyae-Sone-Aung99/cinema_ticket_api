@@ -20,11 +20,14 @@ public class CinemaDto {
 
     private String location;
     private String phoneNumber;
-
+    private String userName;
+    private String password;
+    private String role;
     private Company company;
 
     public static CinemaDto from(Cinema cn){
-        return new CinemaDto(cn.getId(), cn.getCinemaName(), cn.getLocation(), cn.getPhoneNumber(), cn.getCompany());
+        return new CinemaDto(cn.getId(), cn.getCinemaName(), cn.getLocation(), cn.getPhoneNumber(),cn.getUserName(),cn.getPassword(),
+                cn.getRole(),cn.getCompany());
     }
 
 }

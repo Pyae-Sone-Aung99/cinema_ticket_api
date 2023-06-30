@@ -58,18 +58,24 @@ public class TheaterServices {
                 seat.setTheater(theater);
                 seat.setLevel(seatLevel);
                 seatRepo.save(seat);
+//                theater.getSeats().add(seat);
             }
+//            theater.getSeatLevels().add(seatLevel);
         }
         Cinema cinema = cinemaServices.findByBranchManagerId(form.cinemaId());
         theater.setCinema(cinema);
         return TheaterDto.from(theaterRepo.save(theater));
     }
 
+    public List<TheaterDto> findAll(){
+        return theaterRepo.findAll().stream().map(ele -> TheaterDto.from(ele)).toList();
+    }
+
     public List<TheaterDto> findByBranchManagerId(int id){
         return theaterRepo.findByCinemaId(id);
     }
 
-    public Theater findById(int id){
+    public Theater findById(int id) {
         return theaterRepo.findById(id).orElseThrow(IllegalArgumentException::new);
     }
 

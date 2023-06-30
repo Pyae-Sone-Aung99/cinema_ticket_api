@@ -1,5 +1,6 @@
 package com.example.cinematicketapi.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -20,9 +21,9 @@ public class SeatLevel {
     @Column(nullable = false)
     private double price;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne(fetch = FetchType.EAGER)
     private Theater theater;
 
-//    @OneToMany(mappedBy = "level")
-//    private List<Seat> seats = new ArrayList<>();
+    @OneToMany(mappedBy = "level")
+    private List<Seat> seats;
 }

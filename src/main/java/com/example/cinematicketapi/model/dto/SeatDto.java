@@ -27,7 +27,7 @@ public class SeatDto {
 
 //    private Booking booking;
 
-    private static SeatDto from(Seat se){
+    public static SeatDto from(Seat se){
         return new SeatDto(se.getId(), se.getSeatName(), se.isAvailable(), se.getLevel(),
                 se.getTheater());
     }

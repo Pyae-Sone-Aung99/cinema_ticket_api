@@ -30,6 +30,11 @@ public class StaffApi {
         return services.save(form);
     }
 
+    @GetMapping
+    public List<StaffDto> findAll(){
+        return services.findAll();
+    }
+
     @GetMapping("/searchByBmId")
     public List<StaffDto> findByBranchManagerId(@RequestParam("bmId")int id){
         return services.findByBranchManagerId(id);

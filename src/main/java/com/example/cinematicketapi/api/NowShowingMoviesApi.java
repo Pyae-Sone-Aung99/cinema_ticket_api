@@ -2,6 +2,7 @@ package com.example.cinematicketapi.api;
 
 import com.example.cinematicketapi.model.dto.NowShowingMoviesDto;
 import com.example.cinematicketapi.model.dto.TheaterDto;
+import com.example.cinematicketapi.model.dto.UpComingMoviesDto;
 import com.example.cinematicketapi.model.dto.form.AddNowShowingForm;
 import com.example.cinematicketapi.model.dto.form.AddTheatreForm;
 import com.example.cinematicketapi.model.entity.NowShowingMovies;
@@ -18,11 +19,8 @@ import java.util.List;
 @RequestMapping("nowshowing")
 public class NowShowingMoviesApi {
     @Autowired
-    private final NowShowingMoviesServices services;
+    private NowShowingMoviesServices services;
 
-    public NowShowingMoviesApi(NowShowingMoviesServices services) {
-        this.services = services;
-    }
 
     @PostMapping
     public NowShowingMoviesDto create(@RequestBody @Validated AddNowShowingForm form, BindingResult result){
@@ -30,6 +28,11 @@ public class NowShowingMoviesApi {
             throw new EntityNotFoundException();
         }
         return services.save(form);
+    }
+
+    @GetMapping
+    public List<NowShowingMoviesDto> findAll(){
+        return services.findAll();
     }
 
     @GetMapping("/details/{id}")

@@ -30,6 +30,10 @@ public class TheaterApi {
         return services.save(form);
     }
 
+    @GetMapping
+    public List<TheaterDto> findAll(){
+        return services.findAll();
+    }
     @GetMapping("/details/{id}")
     public Theater findById(@PathVariable int id){
         return services.findById(id);
